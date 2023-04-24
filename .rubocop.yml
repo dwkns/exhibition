@@ -1,8 +1,5 @@
 inherit_gem:
   rubocop-shopify: rubocop.yml
 
-Layout/LineLength:
-  Max: 99
-
 Style:
   Enabled: false
