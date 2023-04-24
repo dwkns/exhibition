@@ -68,6 +68,9 @@ group :development do
 
   # for live reloading see: notes/rails 7 with Tailwind and HMR.md
   gem "rails_live_reload"
+
+  # for formatting and linting see: notes/rubucop.md
+  gem "rubocop-shopify", require: false
 end
 
 group :test do
