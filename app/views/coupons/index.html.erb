@@ -1,0 +1,9 @@
+<div>
+  <h1 class="text-4xl font-bold">Coupon redemption</h1>
+  <p>This is the coupon page</p>
+  <ul class="mt-6">
+    <% @coupons.each do |coupon| %>
+      <li class="italic text-gray-700"> <%= coupon.value %> </li>
+    <% end %>
+  </ul>
+</div>
