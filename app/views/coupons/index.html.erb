@@ -14,14 +14,24 @@
     <% end %>
   </div>
   <table class="mt-8 table-auto">
-    <tr>
+    <tr class="text-left">
       <th class="pr-8">Coupon Code</th>
-      <th>Used?</th>
+      <th class="pr-8">Used?</th>
+      <th class="pr-8">Redemetion Date</th>
+      <th class="pr-8">Time remaining</th>
     </tr>
     <% @coupons.each do |coupon| %>
-      <tr class="italic <%= coupon.redeemed ? 'text-red-500' : 'text-green-500' %>">
+      <tr>
         <td><%= coupon.value %></td>
-        <td> <%= coupon.redeemed %></td>
+        <td class="">
+          <%= coupon.redeemed ? '✅' : '❌' %>
+        </td>
+        <td>
+          <% if coupon.redemption_date %>
+            <%= coupon.redemption_date.strftime("%B %d, %Y") %>
+          <% end %>
+        </td>
+        <%= days_left coupon.redemption_date, coupon.length %>
       </tr>
     <% end %>
   </table>

@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_24_165002) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_25_110021) do
   create_table "coupons", force: :cascade do |t|
     t.string "value"
     t.boolean "redeemed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "redemption_date"
+    t.integer "length"
   end
 
 end
