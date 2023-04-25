@@ -1,7 +1,7 @@
 module CouponsHelper
   def days_left(redemption_date, length)
     if !redemption_date
-      return "<td></td>".html_safe
+      return "<td>#{length} days</td>".html_safe
     end
 
     expiry_date = redemption_date + length.days
@@ -9,10 +9,10 @@ module CouponsHelper
 
     if expiry_date.past?
       css_class = "text-red-500"
-      text = "Expired #{expiry_date.strftime("%B %d, %Y")} (#{days} ago)"
+      text = "Expired #{expiry_date.strftime("%B %d")} (#{days} ago)"
     else
       css_class = "text-green-500"
-      text = "Expires on #{expiry_date.strftime("%B %d, %Y")} (#{days} left)"
+      text = "Expires #{expiry_date.strftime("%B %d")} (#{days} left)"
     end
 
     return "<td class='#{css_class}'>#{text}</td>".html_safe

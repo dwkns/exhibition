@@ -8,7 +8,7 @@
 
 5.times do
   Coupon.create(
-    value: SecureRandom.hex(3),
+    value: SecureRandom.hex(3).upcase,
     redeemed: false,
     redemption_date: nil,
     length: 30 # valid for 60 days
@@ -18,7 +18,7 @@ end
 5.times do
   date = Time.now - rand(1..45).days # random date < 100 days ago
   Coupon.create(
-    value: SecureRandom.hex(3),
+    value: SecureRandom.hex(3).upcase,
     redeemed: true,
     redemption_date: date,
     length: 30 # valid for 60 days
