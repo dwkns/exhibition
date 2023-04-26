@@ -1,0 +1,40 @@
+<div>
+  <h1 class="text-4xl font-bold">Coupon redemption</h1>
+  <p>This is the coupon page</p>
+  <div>
+    <%= form_with scope: "coupon", url: update_coupon_path, method: :put, class:"flex flex-col mt-12" , data: { turbo: false} do |form|   %>
+      <%= form.label :coupon_code, "Enter Code", class: "text-2xl" %>
+      <%= form.text_field :coupon_code %>
+      <%= form.submit "Redeem Coupon" , class: "bg-blue-600 text-white px-3 py-1.5 mt-2" %>
+    <% end %>
+  </div>
+  <div>
+    <% if (defined? @coupon_details and @coupon_details[:submitted]) %>
+      <p class=""><%= @coupon_details[:message] %> <%= @coupon_details[:coupon_code] %></p>
+    <% end %>
+  </div>
+  <table class="mt-8 table-auto">
+    <tr class="text-left">
+      <th class="pr-8">Coupon Code</th>
+      <th class="pr-8">Redeemed?</th>
+      <th class="pr-8">Redemetion Date</th>
+      <th class="pr-8">Time remaining</th>
+    </tr>
+    <% @coupons.each do |coupon| %>
+      <tr>
+        <td><%= coupon.value %></td>
+        <td class="">
+          <%= coupon.redeemed ? '✅' : '❌' %>
+        </td>
+        <td>
+          <% if coupon.redemption_date %>
+            <%= coupon.redemption_date.strftime("%d %B") %>
+          <% else %>
+            Not redeemed
+          <% end %>
+        </td>
+        <%= days_left coupon.redemption_date, coupon.length %>
+      </tr>
+    <% end %>
+  </table>
+</div>

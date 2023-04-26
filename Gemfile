@@ -72,6 +72,12 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # for live reloading see: notes/rails 7 with Tailwind and HMR.md
+  gem "rails_live_reload"
+
+  # for formatting and linting see: notes/rubucop.md
+  gem "rubocop-shopify", require: false
 end
 
 group :test do
