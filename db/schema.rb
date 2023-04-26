@@ -13,6 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2023_04_25_110021) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
   create_table "coupons", force: :cascade do |t|
     t.string "value"
     t.boolean "redeemed"
@@ -21,4 +22,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_110021) do
     t.date "redemption_date"
     t.integer "length"
   end
+
 end
